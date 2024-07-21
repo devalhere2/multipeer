@@ -1,13 +1,25 @@
+<script>
+    import { goto } from "$app/navigation";
+</script>
+
 <nav>
     <div id="bar">
-        <div id="name">anonCall</div>
-        <div id="about">about_me</div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div id="name" on:click={() => goto('/')}>
+            <div style="cursor: pointer; width: fit-content;">anonCall</div>
+        </div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div id="about" on:click={() => goto('/about')}>
+
+            <div style="cursor: pointer; width: fit-content;">about_me</div>
+        </div>
         <div id="support">
-            <button>support</button>
+            <button on:click={()=> goto('/support')}>support</button>
         </div>
     </div>
 </nav>
-
 <slot />
 
 <style lang="scss">
@@ -20,6 +32,7 @@
         font-weight: bold;
         border-bottom: 5px solid gold;
         box-sizing: border-box;
+       
         #bar {
             display: flex;
             width: 80%;
@@ -27,8 +40,9 @@
             #name {
                 flex: 1;
                 font-size: 30px;
+                
             }
-            #about{
+            #about {
                 padding: 0px 50px;
             }
             #support {
@@ -37,10 +51,10 @@
                 border-radius: 10px;
                 width: 100px;
                 position: relative;
-                button{
+                button {
                     position: absolute;
                     font-size: large;
-                    font-family: 'Courier New', Courier, monospace;
+                    font-family: "Courier New", Courier, monospace;
                     background-color: gold;
                     border-radius: 10px;
                     top: -4px;
@@ -50,8 +64,8 @@
                     border: 2px solid black;
                     cursor: pointer;
                     transition: transform 100ms;
-                    &:active{
-                        transform: translate(4px,4px);
+                    &:active {
+                        transform: translate(4px, 4px);
                     }
                 }
             }
